@@ -8,4 +8,5 @@
 * [catconfig-demo](./catconfig-demo)：kkconfig-demo: 配置中心客户端demo。
 
 ## 当前进展
-
+* 初始化项目骨架
+* 添加server端基本DB配置操作，实现配置增删改查

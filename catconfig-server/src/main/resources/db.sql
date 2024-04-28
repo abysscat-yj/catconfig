@@ -7,7 +7,7 @@ create table if not exists `configs` (
     `pval` varchar(128) null
 );
 
-insert into configs (app, env, ns, pkey, pval) values ('app1', 'dev', 'public', 'kk.a', 'dev100');
-insert into configs (app, env, ns, pkey, pval) values ('app1', 'dev', 'public', 'kk.b', 'http://localhost:9129');
-insert into configs (app, env, ns, pkey, pval) values ('app1', 'dev', 'public', 'kk.c', 'cc100');
+insert into configs (app, env, ns, pkey, pval) values ('app1', 'dev', 'public', 'cat.a', 'dev100');
+insert into configs (app, env, ns, pkey, pval) values ('app1', 'dev', 'public', 'cat.b', 'http://localhost:9129');
+insert into configs (app, env, ns, pkey, pval) values ('app1', 'dev', 'public', 'cat.c', 'cc100');
 
