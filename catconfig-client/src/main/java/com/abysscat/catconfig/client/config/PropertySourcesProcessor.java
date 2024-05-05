@@ -1,5 +1,6 @@
 package com.abysscat.catconfig.client.config;
 
+import com.abysscat.catconfig.client.repository.CatRepository;
 import lombok.Data;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
@@ -38,12 +39,18 @@ public class PropertySourcesProcessor implements BeanFactoryPostProcessor, Appli
 			return;
 		}
 
-		// todo mock server config
-		Map<String, String> config = new HashMap<>();
-		config.put("cat.a", "a111");
-		config.put("cat.b", "b111");
+		// 远程获取配置
+		String app = configurableEnv.getProperty("catconfig.app", "app1");
+		String env = configurableEnv.getProperty("catconfig.env", "dev");
+		String ns = configurableEnv.getProperty("catconfig.ns", "public");
+		String configServer = configurableEnv.getProperty("catconfig.configServer", "http://localhost:9129");
 
-		CatConfigService configService = new CatConfigServiceImpl(config);
+		ConfigMeta configMeta = new ConfigMeta(app, env, ns, configServer);
+
+		CatRepository repository = CatRepository.getDefault(configMeta);
+		Map<String, String> config = repository.getConfig();
+
+		CatConfigService configService = CatConfigService.getDefault(config);
 
 		CatPropertySource propertySource = new CatPropertySource(CAT_PROPERTY_SOURCE, configService);
 
