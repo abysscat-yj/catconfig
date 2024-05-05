@@ -10,5 +10,7 @@
 ## 当前进展
 * 初始化项目骨架
 * 添加 server 端基本DB配置操作，实现配置增删改查
-* 添加 client 端基本框架，将自定义配置加载到Spring ENV PropertySources 中
+* 添加 client 端基本框架，将自定义配置加载到 Spring ENV PropertySources 中
 * 添加 demo 模块，测试 client 自定义配置获取
+* 增加定时刷新机制，实现配置自动更新
+* 通过 EnvironmentChangeEvent 事件机制，支持 ConfigurationProperties 配置更新

@@ -47,10 +47,7 @@ public class PropertySourcesProcessor implements BeanFactoryPostProcessor, Appli
 
 		ConfigMeta configMeta = new ConfigMeta(app, env, ns, configServer);
 
-		CatRepository repository = CatRepository.getDefault(configMeta);
-		Map<String, String> config = repository.getConfig();
-
-		CatConfigService configService = CatConfigService.getDefault(config);
+		CatConfigService configService = CatConfigService.getDefault(applicationContext, configMeta);
 
 		CatPropertySource propertySource = new CatPropertySource(CAT_PROPERTY_SOURCE, configService);
 

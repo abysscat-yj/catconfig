@@ -1,5 +1,6 @@
 package com.abysscat.catconfig.client.repository;
 
+import com.abysscat.catconfig.client.config.CatConfigService;
 import com.abysscat.catconfig.client.config.CatConfigServiceImpl;
 import com.abysscat.catconfig.client.config.ConfigMeta;
 import org.springframework.context.ApplicationContext;
@@ -19,5 +20,10 @@ public interface CatRepository {
 	}
 
 	Map<String, String> getConfig();
+
+	/**
+	 * 添加配置变更监听器
+	 */
+	void addListener(CatRepositoryChangeListener listener);
 
 }

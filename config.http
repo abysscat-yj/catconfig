@@ -6,10 +6,13 @@ POST http://localhost:9129/update?app=app1&env=dev&ns=public
 Content-Type: application/json
 
 {
-  "cat.a": "a200",
-  "cat.c": "c200",
-  "cat.d": "d200"
+  "cat.a": "a400",
+  "cat.b": "c400",
+  "cat.c": "d300"
 }
 
 ### version
 GET http://localhost:9129/version?app=app1&env=dev&ns=public
+
+### demo
+GET http://localhost:8888/demo?app=app1&env=dev&ns=public
