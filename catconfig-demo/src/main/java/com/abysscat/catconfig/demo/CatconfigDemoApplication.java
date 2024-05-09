@@ -21,7 +21,7 @@ import java.util.Arrays;
 @RestController
 public class CatconfigDemoApplication {
 
-	@Value("${cat.a}")
+	@Value("${cat.a}-${cat.b}")
 	private String a;
 
 	@Value("${cat.b}")

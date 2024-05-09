@@ -13,4 +13,5 @@
 * 添加 client 端基本框架，将自定义配置加载到 Spring ENV PropertySources 中
 * 添加 demo 模块，测试 client 自定义配置获取
 * 增加定时刷新机制，实现配置自动更新
-* 通过 EnvironmentChangeEvent 事件机制，支持 ConfigurationProperties 配置更新
+* 通过 EnvironmentChangeEvent 事件机制，自动实现 ConfigurationProperties 配置更新
+* 接收到 EnvironmentChangeEvent 配置更新事件后，手动更新 spring value 注解配置值

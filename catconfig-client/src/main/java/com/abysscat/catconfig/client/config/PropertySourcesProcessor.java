@@ -39,7 +39,6 @@ public class PropertySourcesProcessor implements BeanFactoryPostProcessor, Appli
 			return;
 		}
 
-		// 远程获取配置
 		String app = configurableEnv.getProperty("catconfig.app", "app1");
 		String env = configurableEnv.getProperty("catconfig.env", "dev");
 		String ns = configurableEnv.getProperty("catconfig.ns", "public");

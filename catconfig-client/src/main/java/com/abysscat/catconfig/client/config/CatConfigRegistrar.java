@@ -1,5 +1,6 @@
 package com.abysscat.catconfig.client.config;
 
+import com.abysscat.catconfig.client.value.SpringValueProcessor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
@@ -24,21 +25,21 @@ public class CatConfigRegistrar implements ImportBeanDefinitionRegistrar {
 
 	@Override
 	public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
-//		ImportBeanDefinitionRegistrar.super.registerBeanDefinitions(importingClassMetadata, registry);
+		registerClass(registry, PropertySourcesProcessor.class);
+		registerClass(registry, SpringValueProcessor.class);
+	}
 
-		log.info("register cat config PropertySourcesProcessor");
-
+	private static void registerClass(BeanDefinitionRegistry registry, Class<?> aClass) {
+		System.out.println("register " + aClass.getName());
 		Optional<String> first = Arrays.stream(registry.getBeanDefinitionNames())
-				.filter(x -> PropertySourcesProcessor.class.getName().equals(x)).findFirst();
+				.filter(x -> aClass.getName().equals(x)).findFirst();
 
 		if (first.isPresent()) {
 			System.out.println("PropertySourcesProcessor already registered");
 			return;
 		}
-
 		AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder
-				.genericBeanDefinition(PropertySourcesProcessor.class).getBeanDefinition();
-		registry.registerBeanDefinition(PropertySourcesProcessor.class.getName(), beanDefinition);
-
+				.genericBeanDefinition(aClass).getBeanDefinition();
+		registry.registerBeanDefinition(aClass.getName(), beanDefinition);
 	}
 }
