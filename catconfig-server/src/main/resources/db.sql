@@ -11,3 +11,9 @@ insert into configs (app, env, ns, pkey, pval) values ('app1', 'dev', 'public', 
 insert into configs (app, env, ns, pkey, pval) values ('app1', 'dev', 'public', 'cat.b', 'http://localhost:9129');
 insert into configs (app, env, ns, pkey, pval) values ('app1', 'dev', 'public', 'cat.c', 'cc100');
 
+
+CREATE TABLE IF NOT EXISTS `locks`(
+                                      `id` INT PRIMARY KEY NOT NULL,
+                                      `app` VARCHAR(64) NOT NULL
+);
+INSERT INTO LOCKS (id, app) VALUES (1, 'catconfig-server');

@@ -28,3 +28,12 @@ Content-Type: application/json
   "catrpc.provider.metas.unit": "S008",
   "catrpc.provider.metas.tc": 27
 }
+
+### status 9129
+GET http://localhost:9129/status?app=app1&env=dev&ns=public
+
+### status 9130
+GET http://localhost:9130/status?app=app1&env=dev&ns=public
+
+### status 9131
+GET http://localhost:9131/status?app=app1&env=dev&ns=public

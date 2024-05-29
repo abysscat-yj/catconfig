@@ -1,5 +1,6 @@
 package com.abysscat.catconfig.server.controller;
 
+import com.abysscat.catconfig.server.lock.DistributeLock;
 import com.abysscat.catconfig.server.mapper.ConfigsMapper;
 import com.abysscat.catconfig.server.model.Configs;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class CatConfigController {
 	@Autowired
 	ConfigsMapper mapper;
 
+	@Autowired
+	DistributeLock distributeLock;
+
 	/**
 	 * 缓存配置版本号
 	 * key: app-env-ns
@@ -32,6 +36,7 @@ public class CatConfigController {
 	 */
 	Map<String, Long> VERSIONS = new HashMap<>();
 
+	// TODO 加缓存
 	@GetMapping("/list")
 	public List<Configs> list(String app, String env, String ns) {
 		return mapper.list(app, env, ns);
@@ -66,5 +71,11 @@ public class CatConfigController {
 
 	private String getVersionsMapKey(String app, String env, String ns) {
 		return app + "-" + env + "-" + ns;
+	}
+
+	@GetMapping("/status")
+	public boolean status() {
+		// 如果返回true，则表示拿到锁，作为主节点
+		return distributeLock.getLocked().get();
 	}
 }
