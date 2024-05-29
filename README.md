@@ -15,3 +15,4 @@
 * 增加定时刷新机制，实现配置自动更新
 * 通过 EnvironmentChangeEvent 事件机制，自动实现 ConfigurationProperties 配置更新
 * 接收到 EnvironmentChangeEvent 配置更新事件后，手动更新 spring value 注解配置值
+* 增加基于DB的分布式锁，集群环境多节点时确定唯一主节点
